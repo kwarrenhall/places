@@ -1,0 +1,8 @@
+#locationName {
+  cursor: pointer;
+  color: #0088cc;
+}
+
+ #locationName:hover {
+  text-decoration: underline;
+}

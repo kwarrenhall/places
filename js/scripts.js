@@ -1,21 +1,26 @@
-function Contact (first, last){
-  this.firstName = first;
-  this.lastName = last;
+function Place (location, landmarks, time, notes){
+  this.location = location;
+  this.landmarks = landmarks;
+  this.timeOfYear = time;
+  this.notes = notes;
 };
 
-Contact.prototype.fullName = function() {
-  return this.firstName + " " + this.lastName;
-}
+var newPlace= {};
 
-$('#contact').submit(function (event){
-event.preventDefault();
- var firstName = $('#firstName').val();
- var lastName = $('#lastName').val();
+$("form").submit(function(event) {
+  event.preventDefault();
 
- var newContact = new Contact(firstName, lastName);
+  var location = $("#location").val();
+  var landmarks = $("#landmarks").val();
+  var date = $("#date").val();
+  var notes = $("#notes").val();
+  newPlace = new Place (location, landmarks, date, notes);
 
-$('ul').empty().append('<li>' + newContact.fullName() + '</li>');
+  $("#locationResult").empty().append('<li> Place Visited: <span id="locationName">' + newPlace.location + '</span></li>')
 
 
+});
 
+$('#locationResult').click(function(){
+  $('#locationData').empty().append('<li> Landmarks Visited: ' + newPlace.landmarks + '</li><li>'+ newPlace.date + '</li><li>'+ newPlace.notes + '</li>');
 });
